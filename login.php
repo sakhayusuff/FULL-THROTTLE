@@ -18,7 +18,7 @@ if (isset($_POST['login'])) {
             // Set session agar user tetap login
             $_SESSION['login'] = true;
             $_SESSION['nama_lengkap'] = $row['nama_lengkap'];
-            
+            $_SESSION['email'] = $row['email'];
             // Arahkan ke halaman utama atau dashboard
             header("Location: booking.php"); 
             exit;

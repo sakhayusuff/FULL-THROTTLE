@@ -7,10 +7,10 @@ $email = $_POST['email'];
 $no_telpon = $_POST['no_telpon'];
 
 // SESUAIKAN NAMA KOLOM DI SINI
-mysqli_query($conn, 
-    "UPDATE users SET 
+mysqli_query($conn,
+    "UPDATE users SET
     nama_lengkap='$nama', 
-    email='$email', 
+    email='$email',
     nomor_hp='$no_telpon' 
     WHERE id='$id'"
 );

@@ -1,14 +1,19 @@
 <?php
-
+session_start(); // Wajib ada untuk baca session
 include 'koneksi.php';
 
-$query = mysqli_query($conn,
-"SELECT * FROM users LIMIT 1");
+// Cek apakah ada yang login
+if (!isset($_SESSION['email'])) {
+    header("Location: ../login.php");
+    exit;
+}
 
+$email_user = $_SESSION['email'];
+
+// Query sekarang mencari user yang sedang login, bukan cuma ID 1
+$query = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email_user'");
 $data = mysqli_fetch_assoc($query);
-
 ?>
-
 <!DOCTYPE html>
 <html lang="id">
 
@@ -92,7 +97,7 @@ $data = mysqli_fetch_assoc($query);
                     <div class="text">
 
                         <h3>
-                            <?php echo $data['nama']; ?>
+                            <h3><?php echo $data['nama_lengkap']; ?></h3>
                         </h3>
 
                         <p>
@@ -130,7 +135,7 @@ $data = mysqli_fetch_assoc($query);
                 type="text"
                 name="nama"
                 id="nama"
-                value="<?php echo $data['nama']; ?>"
+                value="<?php echo $data['nama_lengkap']; ?>"
                 readonly>
 
                 <label>
@@ -152,7 +157,7 @@ $data = mysqli_fetch_assoc($query);
                 type="text"
                 name="no_telpon"
                 id="no_telpon"
-                value="<?php echo $data['no_telpon']; ?>"
+                value="<?php echo $data['nomor_hp']; ?>"
                 readonly>
 
             </div>
