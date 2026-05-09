@@ -685,3 +685,154 @@ footer {
 
 .save-btn:active { transform: scale(0.95); }
 /* --- --- --- */
+
+/* =========================================
+   FORM BOOKING DI DALAM PRICE CARD
+   ========================================= */
+.success-msg {
+    background-color: rgba(0, 230, 118, 0.1);
+    color: #00e676;
+    border: 1px solid #00e676;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    box-shadow: 0 0 15px rgba(0, 230, 118, 0.2);
+}
+
+.booking-form {
+    margin-top: 25px;
+    text-align: left;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+}
+
+.input-row {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-row label {
+    color: var(--text-color-muted);
+    font-size: 12px;
+    font-family: 'Orbitron', sans-serif;
+    width: 35%;
+}
+
+.booking-input {
+    width: 60%;
+    padding: 10px;
+    background-color: #111;
+    border: 1px solid var(--border-color);
+    color: white;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    /* Custom icon untuk penanggalan & jam agar putih */
+    color-scheme: dark; 
+}
+
+.booking-input:focus {
+    border-color: var(--accent-orange);
+    box-shadow: 0 0 8px rgba(255, 87, 34, 0.3);
+}
+
+/* Modifikasi tombol Book agar menjadi button form */
+button.book-btn {
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* --- TAMPILAN HARGA DINAMIS --- */
+.price-display {
+    background: #111;
+    border-left: 4px solid var(--accent-orange);
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 0 10px 10px 0;
+    text-align: center;
+}
+
+#label-hari {
+    font-family: 'Orbitron';
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+#display-harga {
+    font-size: 40px;
+    margin: 10px 0;
+    color: white;
+}
+
+/* --- GRID INPUT --- */
+.input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.field { display: flex; flex-direction: column; }
+.field label { font-size: 10px; color: #888; margin-bottom: 5px; font-family: 'Orbitron'; }
+
+/* --- TOMBOL BOOKING PRO --- */
+.pro-book-btn {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(45deg, #d32f2f, #ff5722);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-family: 'Orbitron';
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(211, 47, 47, 0.4);
+}
+
+.pro-book-btn:hover {
+    transform: scale(1.02) translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255, 87, 34, 0.6);
+}
+
+.pro-book-btn:active { transform: scale(0.98); }
+
+.pro-book-btn .btn-icon {
+    transition: transform 0.5s ease;
+}
+
+.pro-book-btn:hover .btn-icon {
+    transform: translateX(100px); /* Efek mobil melaju saat di-hover */
+    opacity: 0;
+}
+
+/* Animasi cahaya menyapu tombol */
+.pro-book-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0.2), rgba(255,255,255,0));
+    transform: rotate(45deg);
+    transition: 0.5s;
+}
+
+.pro-book-btn:hover::after {
+    left: 100%;
+}

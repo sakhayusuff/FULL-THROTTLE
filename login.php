@@ -20,7 +20,7 @@ if (isset($_POST['login'])) {
             $_SESSION['nama_lengkap'] = $row['nama_lengkap'];
             
             // Arahkan ke halaman utama atau dashboard
-            header("Location: index.php"); 
+            header("Location: booking.php"); 
             exit;
         } else {
             $pesan = "<p style='color: #d32f2f; text-align: center;'>Password salah! Rem mendadak.</p>";
