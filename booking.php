@@ -7,6 +7,8 @@ if (!isset($_SESSION['login'])) {
     exit;
 }
 
+
+
 $pesan_booking = "";
 if (isset($_POST['book_now'])) {
     $nama = $_SESSION['nama_lengkap'];
@@ -15,6 +17,8 @@ if (isset($_POST['book_now'])) {
     $sesi = $_POST['jumlah_sesi'];
     $tipe_hari = $_POST['tipe_hari']; // Didapat dari JS otomatis
     $total_harga = ($tipe_hari == "Weekend") ? ($sesi * 60000) : ($sesi * 50000);
+    header("Location: Profil_sayaGokart/profil_saya.php");
+    exit;
 
     $pesan_booking = "
     <div class='success-msg'>

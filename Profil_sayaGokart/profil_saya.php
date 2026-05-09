@@ -92,7 +92,7 @@ $data = mysqli_fetch_assoc($query);
                     <div class="text">
 
                         <h3>
-                            <?php echo $data['nama']; ?>
+                            <h3><?php echo $data['nama_lengkap']; ?></h3>
                         </h3>
 
                         <p>
@@ -130,7 +130,7 @@ $data = mysqli_fetch_assoc($query);
                 type="text"
                 name="nama"
                 id="nama"
-                value="<?php echo $data['nama']; ?>"
+                <h3><?php echo $data['nama_lengkap']; ?></h3>
                 readonly>
 
                 <label>
@@ -152,7 +152,7 @@ $data = mysqli_fetch_assoc($query);
                 type="text"
                 name="no_telpon"
                 id="no_telpon"
-                value="<?php echo $data['no_telpon']; ?>"
+                value="<?php echo $data['nomor_hp']; ?>"
                 readonly>
 
             </div>

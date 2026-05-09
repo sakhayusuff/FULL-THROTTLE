@@ -4,7 +4,7 @@ $conn = mysqli_connect(
     "localhost",
     "root",
     "",
-    "db_gokart"
+    "racing_db"
 );
 
 if(!$conn){
