@@ -1,0 +1,668 @@
+:root {
+    --bg-color: #121212;
+    --panel-bg: #1e1e1e;
+    --text-color-light: #f5f5f5;
+    --text-color-muted: #b0b0b0;
+    --accent-orange: #ff5722;
+    --accent-red: #d32f2f;
+    --border-color: #333333;
+    --grid-line-color: #2a2a2a;
+    --green: #00ff08;
+    --yellow: #f8df06;
+    --blue: #2196f3;
+    --white: #ffffff;
+    --black: #000000;
+}
+
+/* =========================================
+   TOMBOL LOGIN DI HALAMAN UTAMA
+   ========================================= */
+.hero-login-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    background-color: transparent;
+    color: #ff5722;
+    border: 2px solid #ff5722;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 87, 34, 0.2);
+}
+
+.hero-login-btn:hover {
+    background-color: #ff5722;
+    color: #000;
+    box-shadow: 0 0 20px rgba(255, 87, 34, 0.6);
+    transform: translateY(-3px); /* Efek melayang saat disentuh mouse */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color-light);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    font-weight: 700;
+}
+
+.hero {
+    padding: 40px 0;
+}
+
+.main-subtitle {
+    font-size: clamp(12px, 3vw, 16px);
+    color: var(--text-color-muted);
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 20px;
+    letter-spacing: 1px;
+}
+
+/* --- PERBAIKAN JUDUL DI SINI --- */
+.main-title {
+    font-size: clamp(40px, 8vw, 80px); /* Responsif scaling ukuran font */
+    text-align: center;
+    background: linear-gradient(90deg, var(--accent-red) 0%, var(--accent-orange) 100%);
+    -webkit-background-clip: text; /* Versi WebKit (Safari/Chrome lama) */
+    background-clip: text;         /* Versi Standar CSS (Diperlukan untuk kompatibilitas linter) */
+    -webkit-text-fill-color: transparent;
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
+/* --- --- --- */
+
+.hero-desc {
+    font-size: clamp(14px, 4vw, 18px);
+    color: var(--text-color-muted);
+    text-align: center;
+    max-width: 800px;
+    margin: 20px auto 40px auto;
+    line-height: 1.6;
+}
+
+.scroll-down {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    cursor: pointer;
+    color: var(--accent-orange);
+}
+
+.scroll-down:hover {
+    opacity: 0.8;
+}
+
+.panel {
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: clamp(15px, 5vw, 30px);
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.panel-header {
+    color: var(--accent-orange);
+    margin-bottom: 10px;
+    font-size: clamp(24px, 5vw, 32px);
+}
+
+.panel-desc {
+    color: var(--text-color-muted);
+    margin-bottom: 30px;
+    font-size: clamp(14px, 3vw, 16px);
+}
+
+/* Engine Specs */
+.engine-specs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 40px;
+}
+
+.spec-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px 0;
+    gap: 10px;
+}
+
+.spec-label {
+    color: var(--text-color-muted);
+    font-size: clamp(12px, 3vw, 14px);
+}
+
+.spec-value {
+    color: var(--text-color-light);
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(12px, 3vw, 16px);
+    text-align: right;
+}
+
+.spec-value.orange { color: var(--accent-orange); }
+
+.curve-title {
+    color: var(--text-color-light);
+    font-size: clamp(16px, 4vw, 20px);
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.power-curve-placeholder {
+    height: 200px;
+    border: 1px solid var(--grid-line-color);
+    margin-top: 20px;
+    position: relative;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    color: var(--text-color-muted);
+}
+
+.pcp-rpm { position: absolute; bottom: -20px; text-align: center; width: 60px;}
+.pcp-rpm.r1 { left: 0; }
+.pcp-rpm.r2 { left: 50%; transform: translateX(-50%); }
+.pcp-rpm.r3 { right: 0; }
+
+/* Race Track Map */
+.race-track-map {
+    width: 100%;
+    aspect-ratio: 2 / 1; /* Responsif proporsional */
+    background-color: var(--panel-bg);
+    position: relative;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#track-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.turn-label {
+    position: absolute;
+    background-color: var(--accent-red);
+    color: var(--white);
+    border-radius: 50%;
+    width: clamp(16px, 3vw, 24px);
+    height: clamp(16px, 3vw, 24px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(8px, 2vw, 12px);
+    font-weight: bold;
+    transform: translate(-50%, -50%); /* Center positioning */
+}
+
+.start-finish-label {
+    position: absolute;
+    color: var(--white);
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(8px, 2vw, 12px);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.start-line {
+    background-color: var(--white); 
+    height: clamp(30px, 8vw, 50px); 
+    width: 3px;
+    margin-top: 5px;
+}
+
+.track-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.stat-box {
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: clamp(10px, 3vw, 20px);
+    text-align: center;
+}
+
+.stat-value {
+    color: var(--accent-orange);
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(18px, 5vw, 32px);
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    color: var(--text-color-muted);
+    font-size: clamp(10px, 3vw, 14px);
+}
+
+/* Lap Records */
+.lap-record-label {
+    color: var(--text-color-muted); 
+    font-family: 'Orbitron', sans-serif; 
+    font-size: 12px; 
+    text-align: center; 
+    text-transform: uppercase;
+}
+
+.lap-record {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--white);
+    font-size: clamp(48px, 10vw, 72px);
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.lap-record span.red { color: var(--accent-red); }
+
+.lap-record-sub {
+    color: var(--text-color-muted); 
+    text-align: center; 
+    margin-bottom: 15px;
+}
+
+.record-driver-info {
+    color: var(--accent-orange);
+    text-align: center;
+    font-size: clamp(12px, 3vw, 14px);
+    margin-bottom: 30px;
+}
+
+.sector-box {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: clamp(5px, 2vw, 15px); /* Sedikit dikurangi agar lebih lega */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0; /* KUNCI PERBAIKAN: Mencegah box memaksakan diri melebar */
+}
+
+.sector-time {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(12px, 3.5vw, 20px); /* Ukuran font disesuaikan sedikit */
+    word-break: break-word; /* Jika layar sangat kecil, teks akan turun ke bawah, bukan melebar */
+    text-align: center;
+}
+
+/* Sesuaikan nilai flex dengan waktu yang baru agar grafik bar akurat */
+.sb-segment.green { flex: 4.893; background-color: #00e676; } /* Sektor 1 - Hijau Terang */
+.sb-segment.yellow { flex: 5.3718; background-color: #ffea00; } /* Sektor 2 - Kuning Terang */
+.sb-segment.purple { flex: 5.267; background-color: #d500f9; } /* Sektor 3 - Ungu Terang */
+
+/* Titik (Dot) pada Box Sektor */
+.sector-box.green .dot { background-color: #00e676; }
+.sector-box.yellow .dot { background-color: #ffea00; }
+.sector-box.purple .dot { background-color: #d500f9; }
+
+.sector-title {
+    color: var(--text-color-muted);
+    font-size: clamp(8px, 2.5vw, 12px);
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.sector-time {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(14px, 4vw, 24px);
+}
+
+.sector-box.green .dot { background-color: var(--green); }
+.sector-box.orange .dot { background-color: var(--accent-orange); }
+.sector-box.red .dot { background-color: var(--accent-red); }
+
+.sector-breakdown-label {
+    color: var(--text-color-muted); 
+    font-size: clamp(12px, 3vw, 14px); 
+    margin-top: 30px; 
+    margin-bottom: 10px;
+}
+
+.sector-breakdown-bar {
+    height: 10px;
+    display: flex;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Flags Grid */
+.flags-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+}
+
+.flag-box {
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.flag-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.flag-color {
+    width: 50px;
+    height: 30px;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+.green-bg { background-color: var(--green); }
+.yellow-bg { background-color: var(--yellow); }
+.red-bg { background-color: var(--accent-red); }
+.blue-bg { background-color: var(--blue); }
+.white-bg { background-color: var(--white); border: 1px solid var(--border-color); }
+.checkered-bg { background: repeating-conic-gradient(var(--black) 0% 25%, var(--white) 0% 50%) 50% / 20px 20px; }
+
+.flag-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(14px, 4vw, 18px);
+}
+
+.flag-box.green .flag-name { color: var(--green); }
+.flag-box.yellow .flag-name { color: var(--yellow); }
+.flag-box.red .flag-name { color: var(--accent-red); }
+.flag-box.blue .flag-name { color: var(--blue); }
+.flag-box.white .flag-name { color: var(--white); }
+.flag-box.black .flag-name { color: var(--white); }
+
+.flag-desc {
+    color: var(--text-color-muted);
+    font-size: clamp(12px, 3vw, 14px);
+    line-height: 1.5;
+}
+
+/* Facilities */
+.facilities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.facility-box {
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: clamp(15px, 4vw, 20px);
+    display: grid;
+    grid-template-columns: clamp(40px, 10vw, 60px) 1fr;
+    gap: 15px;
+    align-items: center;
+}
+
+.facility-icon-container {
+    width: clamp(40px, 10vw, 60px);
+    height: clamp(40px, 10vw, 60px);
+    border: 2px solid var(--accent-red);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(16px, 5vw, 24px);
+    color: var(--accent-red);
+}
+
+.facility-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(14px, 4vw, 18px);
+    color: var(--text-color-light);
+    margin-bottom: 5px;
+}
+
+.facility-desc {
+    color: var(--text-color-muted);
+    font-size: clamp(12px, 3vw, 14px);
+    line-height: 1.5;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+    color: var(--text-color-muted);
+    font-size: 14px;
+    margin-top: auto;
+    border-top: 1px solid var(--border-color);
+}
+
+/* =========================================
+   MEDIA QUERIES UNTUK MOBILE & TABLET
+   ========================================= */
+
+@media (max-width: 768px) {
+    /* Merubah kolom ganda menjadi 1 kolom yang meluas ke bawah di layar kecil */
+    .engine-specs, 
+    .flags-grid, 
+    .facilities-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .spec-item {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Peta trek diatur agar lebih sesuai di layar kecil */
+    .race-track-map {
+        aspect-ratio: 4/3;
+    }
+
+    .start-finish-label {
+        top: -5%;
+        left: 20%;
+    }
+}
+
+/* --- PERBAIKAN KHUSUS LAYAR SANGAT KECIL (MOBILE PREVIEW) --- */
+@media (max-width: 480px) {
+    /* Perkecil ukuran font judul agar fit di satu baris */
+    .main-title {
+        font-size: 32px; /* Ukuran statis lebih kecil dari minimum clamp asli */
+    }
+    
+    /* Kode yang ada untuk merubah struktur 3 kolom statistik dan sektor */
+    .track-stats, .sector-times {
+        grid-template-columns: 1fr; 
+    }
+}
+
+/* =========================================
+   FITUR RACING LICENSE CARD
+   ========================================= */
+.license-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto 30px auto;
+}
+
+.license-form input {
+    padding: 12px;
+    background-color: #222;
+    border: 1px solid var(--border-color);
+    color: var(--text-color-light);
+    font-family: 'Orbitron', sans-serif;
+    border-radius: 5px;
+    outline: none;
+}
+
+.license-form input:focus {
+    border-color: var(--accent-orange);
+}
+
+.license-form button {
+    padding: 15px;
+    background-color: var(--accent-orange);
+    color: white;
+    border: none;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.1s ease, background-color 0.3s;
+}
+
+.license-form button:active {
+    transform: scale(0.95);
+}
+
+/* Desain Visual ID Card */
+.id-card {
+    background: linear-gradient(135deg, #111, #2a2a2a);
+    border: 2px solid var(--accent-orange);
+    border-radius: 10px;
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(255, 87, 34, 0.3);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.id-header {
+    text-align: center;
+    color: var(--accent-orange);
+    font-size: 12px;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.id-body {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.id-photo {
+    width: 80px;
+    height: 80px;
+    background-color: #000;
+    border: 2px solid #555;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.id-details {
+    flex-grow: 1;
+}
+
+.id-details .label {
+    font-size: 10px;
+    color: #888;
+    margin: 0 0 2px 0;
+    letter-spacing: 1px;
+}
+
+.id-details h3 {
+    margin: 0 0 10px 0;
+    color: white;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.id-details h4 {
+    margin: 0;
+    color: #00e676; /* Warna neon hijau */
+    font-style: italic;
+    font-size: 14px;
+}
+
+.id-number {
+    font-size: 45px;
+    font-weight: bold;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--accent-orange);
+    text-shadow: 3px 3px 0px rgba(255, 87, 34, 0.2);
+}
+
+.id-footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 10px;
+    color: #555;
+    letter-spacing: 1px;
+}
+
+/* =========================================
+   TAMBAHAN CSS UNTUK FOTO & TOMBOL SAVE
+   ========================================= */
+/* Tombol upload palsu biar terlihat keren */
+.file-label {
+    background-color: #333;
+    color: var(--text-color-light);
+    padding: 12px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    border: 1px dashed var(--accent-orange);
+    transition: background-color 0.3s;
+}
+
+.file-label:hover { background-color: #444; }
+
+/* Menyiapkan kotak foto agar gambar pas */
+.id-photo {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden; /* Biar foto nggak luber */
+}
+
+/* Tombol Download/Save */
+.save-btn {
+    margin-top: 25px;
+    padding: 15px 25px;
+    background-color: #00e676; /* Warna Hijau Neon */
+    color: #000;
+    border: none;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 230, 118, 0.4);
+    transition: transform 0.2s;
+}
+
+.save-btn:active { transform: scale(0.95); }
+/* --- --- --- */
