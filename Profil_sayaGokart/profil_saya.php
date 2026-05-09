@@ -92,7 +92,7 @@ $data = mysqli_fetch_assoc($query);
                     <div class="text">
 
                         <h3>
-                            <h3><?php echo $data['nama_lengkap']; ?></h3>
+                            <?php echo $data['nama']; ?>
                         </h3>
 
                         <p>
@@ -130,7 +130,7 @@ $data = mysqli_fetch_assoc($query);
                 type="text"
                 name="nama"
                 id="nama"
-                <h3><?php echo $data['nama_lengkap']; ?></h3>
+                value="<?php echo $data['nama']; ?>"
                 readonly>
 
                 <label>
@@ -152,7 +152,7 @@ $data = mysqli_fetch_assoc($query);
                 type="text"
                 name="no_telpon"
                 id="no_telpon"
-                value="<?php echo $data['nomor_hp']; ?>"
+                value="<?php echo $data['no_telpon']; ?>"
                 readonly>
 
             </div>
@@ -196,17 +196,51 @@ $data = mysqli_fetch_assoc($query);
 
                 <h3>Keamanan</h3>
 
-                <div class="security">
+                <form
+                action="update_password.php"
+                method="POST">
 
-                    <p>
+                    <input
+                    type="hidden"
+                    name="id"
+                    value="<?php echo $data['id']; ?>">
+
+                    <label>
+                        Password Lama
+                    </label>
+
+                    <input
+                    type="password"
+                    name="password_lama"
+                    required>
+
+                    <label>
+                        Password Baru
+                    </label>
+
+                    <input
+                    type="password"
+                    name="password_baru"
+                    required>
+
+                    <label>
+                        Konfirmasi Password
+                    </label>
+
+                    <input
+                    type="password"
+                    name="konfirmasi_password"
+                    required>
+
+                    <button
+                    type="submit"
+                    class="btn red">
+
                         Ganti Password
-                    </p>
 
-                    <small>
-                        Update password akun Anda
-                    </small>
+                    </button>
 
-                </div>
+                </form>
 
             </div>
 
