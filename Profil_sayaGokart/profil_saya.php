@@ -1,0 +1,269 @@
+<?php
+
+include 'koneksi.php';
+
+$query = mysqli_query($conn,
+"SELECT * FROM users LIMIT 1");
+
+$data = mysqli_fetch_assoc($query);
+
+?>
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Profil Saya - GoKart Racing
+    </title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <h2>GoKart Racing</h2>
+
+        <p class="sub">
+            Booking System
+        </p>
+
+        <ul>
+            <li>Dashboard</li>
+            <li>Booking</li>
+            <li>Riwayat Booking</li>
+            <li>Hasil Balapan</li>
+            <li>Leaderboard</li>
+            <li>Pembayaran</li>
+            <li>Promo & Voucher</li>
+
+            <li class="active">
+                Profil Saya
+            </li>
+        </ul>
+
+        <div class="logout">
+            Logout
+        </div>
+
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+
+        <h1>Profil Saya</h1>
+
+        <p class="desc">
+            Kelola informasi profil Anda
+        </p>
+
+        <!-- FORM -->
+        <form
+        action="update_profil.php"
+        method="POST"
+        id="profileForm">
+
+            <input
+            type="hidden"
+            name="id"
+            value="<?php echo $data['id']; ?>">
+
+            <!-- Profile Header -->
+            <div class="profile-card">
+
+                <div class="banner"></div>
+
+                <div class="profile-info">
+
+                    <div class="avatar"></div>
+
+                    <div class="text">
+
+                        <h3>
+                            <?php echo $data['nama']; ?>
+                        </h3>
+
+                        <p>
+                            <?php echo $data['email']; ?>
+                        </p>
+
+                    </div>
+
+                    <!-- BUTTON -->
+                    <button
+                    type="button"
+                    id="editBtn"
+                    class="btn red">
+
+                        Edit Profil
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Informasi -->
+            <div class="card">
+
+                <h3>
+                    Informasi Pribadi
+                </h3>
+
+                <label>
+                    Nama Lengkap
+                </label>
+
+                <input
+                type="text"
+                name="nama"
+                id="nama"
+                value="<?php echo $data['nama']; ?>"
+                readonly>
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                type="email"
+                name="email"
+                id="email"
+                value="<?php echo $data['email']; ?>"
+                readonly>
+
+                <label>
+                    Nomor Telepon
+                </label>
+
+                <input
+                type="text"
+                name="no_telpon"
+                id="no_telpon"
+                value="<?php echo $data['no_telpon']; ?>"
+                readonly>
+
+            </div>
+
+        </form>
+
+        <!-- Statistik -->
+        <div class="grid">
+
+            <div class="card">
+
+                <h3>Statistik</h3>
+
+                <p>
+                    Total Race
+                    <span class="right">
+                        24
+                    </span>
+                </p>
+
+                <p>
+                    Best Time
+
+                    <span class="green">
+                        00:45.234
+                    </span>
+                </p>
+
+                <p>
+                    Member Since
+
+                    <span class="right">
+                        Jan 2026
+                    </span>
+                </p>
+
+            </div>
+
+            <!-- Keamanan -->
+            <div class="card">
+
+                <h3>Keamanan</h3>
+
+                <div class="security">
+
+                    <p>
+                        Ganti Password
+                    </p>
+
+                    <small>
+                        Update password akun Anda
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<!-- SCRIPT -->
+<script>
+
+let isEditing = false;
+
+const editBtn =
+document.getElementById("editBtn");
+
+const inputs = [
+
+    document.getElementById("nama"),
+
+    document.getElementById("email"),
+
+    document.getElementById("no_telpon")
+
+];
+
+const form =
+document.getElementById("profileForm");
+
+editBtn.addEventListener("click", function(){
+
+    if(!isEditing){
+
+        // buka readonly
+        inputs.forEach(input => {
+
+            input.removeAttribute("readonly");
+
+        });
+
+        // ubah tombol
+        editBtn.innerHTML =
+        "Simpan Perubahan";
+
+        isEditing = true;
+
+    }else{
+
+        // submit form
+        form.submit();
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
