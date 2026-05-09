@@ -51,6 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('card-nickname').innerText = nickInput ? `"${nickInput.toUpperCase()}"` : '"THE ROOKIE"';
             document.getElementById('card-number').innerText = numInput ? numInput : '99';
 
+            document.getElementById('card-signature').innerText = nameInput; // Tanda tangan sesuai nama
+            document.getElementById('card-license-no').innerText = "FT-" + Math.floor(1000 + Math.random() * 9000) + "-X"; // Bikin nomor acak
+
             // Pasang foto pengguna ke dalam ID Card
             const cardPhoto = document.getElementById('card-photo');
             if (uploadedImageURL !== '') {

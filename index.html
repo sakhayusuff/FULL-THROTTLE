@@ -140,7 +140,86 @@
                 <div class="flag-box black"><div class="flag-header"><div class="flag-color white-bg"></div><h4 class="flag-name">Bendera Hitam</h4></div><p class="flag-desc">Driver diskualifikasi atau harus kembali ke pit. Penalty dikeluarkan.</p></div>
             </div>
         </div>
+ <div class="panel">
+            <h2 class="panel-header" style="text-align: center;">🪪 RACING LICENSE GENERATOR</h2>
+            <p class="panel-desc" style="text-align: center;">Buat Kartu Lisensi Balap Virtualmu Sendiri!</p>
 
+            <div class="license-form">
+                <input type="text" id="driver-name" placeholder="Nama Lengkap" autocomplete="off">
+                <input type="text" id="driver-nickname" placeholder="Julukan Balap (Opsional)" autocomplete="off">
+                <input type="number" id="driver-number" placeholder="Nomor Mobil Pilihan (0-99)" min="0" max="99">
+                
+                <label for="driver-photo" class="file-label">
+                    <span id="file-label-text">📸 Upload Foto Profil (Opsional)</span>
+                </label>
+                <input type="file" id="driver-photo" accept="image/*" style="display: none;">
+
+                <button id="generate-btn">CETAK LISENSI</button>
+            </div>
+
+           <div id="id-card-wrapper" style="display: none; text-align: center; margin-top: 40px;">
+    
+    <div class="id-card" id="id-card-result">
+        <div class="id-hologram"></div>
+        
+        <div class="id-header">
+            <div class="header-left">
+                <span class="country">IDN</span>
+                <span class="title">RACING SUPER LICENSE</span>
+            </div>
+            <div class="header-right">FULL THROTTLE</div>
+        </div>
+
+        <div class="id-body">
+            <div class="id-photo-container">
+                <div class="id-photo" id="card-photo">🏁</div>
+                <div class="id-class" id="card-class">PRO CLASS</div>
+            </div>
+            
+            <div class="id-details">
+                <div class="detail-row">
+                    <div class="field">
+                        <p class="label">LICENSE NO.</p>
+                        <h4 id="card-license-no">FT-8890-X</h4>
+                    </div>
+                    <div class="field">
+                        <p class="label">BLOOD TYPE</p>
+                        <h4 id="card-blood">O+</h4>
+                    </div>
+                </div>
+                
+                <div class="field">
+                    <p class="label">DRIVER NAME</p>
+                    <h3 id="card-name">MAX VERSTAPPEN</h3>
+                </div>
+                <div class="field">
+                    <p class="label">RACING ALIAS</p>
+                    <h4 class="alias" id="card-nickname">"MAD MAX"</h4>
+                </div>
+                
+                <div class="signature-box">
+                    <p class="label">HOLDER'S SIGNATURE</p>
+                    <div class="signature" id="card-signature">M. Verstappen</div>
+                </div>
+            </div>
+            
+            <div class="id-side">
+                <div class="id-chip"></div>
+                <div class="id-number" id="card-number">33</div>
+            </div>
+        </div>
+
+        <div class="id-footer">
+            <div class="id-barcode"></div>
+            <div class="id-legal">
+                ISSUED: 05/2026<br>
+                VALID THRU: 12/2028
+            </div>
+        </div>
+    </div>
+
+    <button id="save-btn" class="save-btn">📥 DOWNLOAD HD LICENSE</button>
+</div>
         <div class="panel">
             <h2 class="panel-header">Fasilitas</h2>
             <p class="panel-desc">Segala yang Anda butuhkan untuk hari balapan yang hebat</p>
@@ -174,12 +253,12 @@
         </div>
     </div>
 
-    
+   
 
     <footer>
         © 2025 Go-Kart Racing Hub. All rights reserved.
     </footer>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
