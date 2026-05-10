@@ -3,27 +3,30 @@ require 'koneksi.php';
 $pesan = "";
 
 if (isset($_POST['daftar'])) {
+    // Sesuaikan dengan nama input di form lu
     $nama = mysqli_real_escape_string($koneksi, $_POST['nama_lengkap']);
     $hp = mysqli_real_escape_string($koneksi, $_POST['nomor_hp']);
     $email = mysqli_real_escape_string($koneksi, $_POST['email']);
     $password = mysqli_real_escape_string($koneksi, $_POST['password']);
 
-    // Cek apakah email sudah terdaftar
-    $cek_email = mysqli_query($koneksi, "SELECT email FROM users WHERE email = '$email'");
+    // 1. CEK APAKAH EMAIL ATAU USERNAME SUDAH ADA
+    // Kita cek username pakai variabel $nama karena di query nanti $nama jadi username
+    $cek_user = mysqli_query($koneksi, "SELECT * FROM users WHERE email = '$email' OR username = '$nama'");
     
-    if (mysqli_num_rows($cek_email) > 0) {
-        $pesan = "<p style='color: #d32f2f; text-align: center;'>Email sudah terdaftar! Gunakan email lain.</p>";
+    if (mysqli_num_rows($cek_user) > 0) {
+        $pesan = "<p style='color: #d32f2f; text-align: center;'>Email atau Nama sudah terdaftar! Gunakan yang lain.</p>";
     } else {
-        // Enkripsi password untuk keamanan
         $password_hashed = password_hash($password, PASSWORD_DEFAULT);
         
-        // Masukkan data ke database
-        $query = "INSERT INTO users (nama_lengkap, nomor_hp, email, password) VALUES ('$nama', '$hp', '$email', '$password_hashed')";
+        // 2. QUERY INSERT HARUS SESUAI KOLOM DATABASE FAISAL (nama, username, email, nomor_hp, password)
+        // Pastikan lu sudah tambah kolom 'nomor_hp' manual di phpMyAdmin seperti instruksi sebelumnya
+       $query = "INSERT INTO users (nama, username, email, nomor_hp, password) 
+          VALUES ('$nama', '$nama', '$email', '$hp', '$password_hashed')";
         
         if (mysqli_query($koneksi, $query)) {
             $pesan = "<p style='color: #00e676; text-align: center;'>Pendaftaran berhasil! Silakan <a href='login.php' style='color:#ff5722;'>Login di sini</a>.</p>";
         } else {
-            $pesan = "<p style='color: #d32f2f; text-align: center;'>Terjadi kesalahan sistem.</p>";
+            $pesan = "<p style='color: #d32f2f; text-align: center;'>Terjadi kesalahan: " . mysqli_error($koneksi) . "</p>";
         }
     }
 }

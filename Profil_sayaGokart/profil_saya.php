@@ -38,33 +38,26 @@ $data = mysqli_fetch_assoc($query);
 
     <!-- Sidebar -->
     <aside class="sidebar">
+    <h2>GoKart Racing</h2>
+    <p class="sub">Booking System</p>
+    <<ul>
+    <li><a href="../index.html" style="text-decoration:none; color:inherit; display:block;">Home</a></li>
+    
+    <li><a href="../pertemuan 3 copy/dashboard.php" style="text-decoration:none; color:inherit; display:block;">Dashboard</a></li>
+    
+    <li><a href="../booking.php" style="text-decoration:none; color:inherit; display:block;">Booking</a></li>
+    
+    <li><a href="../pertemuan 3 copy/riwayat.php" style="text-decoration:none; color:inherit; display:block;">Riwayat Balapan</a></li>
+    
+    <li><a href="../pertemuan 3 copy/detail_booking.php" style="text-decoration:none; color:inherit; display:block;">Detail Booking</a></li>
+    
+    <li class="active">Profil Saya</li>
+</ul>
 
-        <h2>GoKart Racing</h2>
-
-        <p class="sub">
-            Booking System
-        </p>
-
-        <ul>
-            <li>Dashboard</li>
-            <li>Booking</li>
-            <li>Riwayat Booking</li>
-            <li>Hasil Balapan</li>
-            <li>Leaderboard</li>
-            <li>Pembayaran</li>
-            <li>Promo & Voucher</li>
-
-            <li class="active">
-                Profil Saya
-            </li>
-        </ul>
-
-        <div class="logout">
-            Logout
-        </div>
-
-    </aside>
-
+    <div class="logout">
+        <a href="../login.php" style="text-decoration:none; color:gray;">Logout</a>
+    </div>
+</aside>
     <!-- Main -->
     <main class="main">
 
@@ -97,7 +90,7 @@ $data = mysqli_fetch_assoc($query);
                     <div class="text">
 
                         <h3>
-                            <h3><?php echo $data['nama_lengkap']; ?></h3>
+                           <h3><?php echo $data['nama']; ?></h3>
                         </h3>
 
                         <p>
@@ -135,7 +128,7 @@ $data = mysqli_fetch_assoc($query);
                 type="text"
                 name="nama"
                 id="nama"
-                value="<?php echo $data['nama_lengkap']; ?>"
+                value="<?php echo $data['nama']; ?>"
                 readonly>
 
                 <label>
